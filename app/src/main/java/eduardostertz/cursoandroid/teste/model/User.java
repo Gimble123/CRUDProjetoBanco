@@ -51,7 +51,8 @@ public class User {
 
         objectDocumentReference.update("cep", estabelecimento.getCep());
 
-    }*/
+    }
+    */
 
     /*public void deletar() {
         FirebaseFirestore firebaseRef = ConfiguracaoFirebase.getFirebaseDatabase();
