@@ -95,6 +95,8 @@ public class User extends AppCompatActivity {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         Log.w("TAGCadastro", "Erro ao cadastrar", e);
+                        Toast.makeText(getApplicationContext(), "Erro ao cadastrar!.",
+                                Toast.LENGTH_SHORT).show();
                     }
                 });
     }
@@ -110,11 +112,17 @@ public class User extends AppCompatActivity {
                     DocumentSnapshot document = task.getResult();
                     if (document.exists()) {
                         textView.setText(editTextId.getText().toString());
+                        Toast.makeText(getApplicationContext(), "Documento encontrado!.",
+                                Toast.LENGTH_SHORT).show();
                     } else {
                         Log.d("TAG", "Documento não encontrado");
+                        Toast.makeText(getApplicationContext(), "Documento não encontrado!.",
+                                Toast.LENGTH_SHORT).show();
                     }
                 } else {
                     Log.d("TAG", "Falhou em ", task.getException());
+                    Toast.makeText(getApplicationContext(), "Falha ao ler!.",
+                            Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -132,11 +140,15 @@ public class User extends AppCompatActivity {
             @Override
             public void onSuccess(Void aVoid) {
                 textView.setText("Atualizado!");
+                Toast.makeText(getApplicationContext(), "Atualizado!.",
+                        Toast.LENGTH_SHORT).show();
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
                 Log.d("TAG", "Falhou ao atualizar");
+                Toast.makeText(getApplicationContext(), "Falha ao atualizar!.",
+                        Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -151,16 +163,21 @@ public class User extends AppCompatActivity {
                     public void onSuccess(Void aVoid) {
                         limparDados();
                         textView.setText("Deletado!");
+                        Toast.makeText(getApplicationContext(), "Deletado!.",
+                                Toast.LENGTH_SHORT).show();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         Log.w("TAG", "Erro ao deletar!", e);
+                        Toast.makeText(getApplicationContext(), "Erro ao deletar!.",
+                                Toast.LENGTH_SHORT).show();
                     }
                 });
     }
 
+    //após deletar deve limpar os campos
     public void limparDados(){
         editTextId.setText("Id do Usuário");
         editTextNomeUsuario.setText("Nome");
