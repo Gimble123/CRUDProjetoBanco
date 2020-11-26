@@ -11,12 +11,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
@@ -24,32 +21,33 @@ import java.util.Map;
 
 import eduardostertz.cursoandroid.teste.R;
 
-public class MainActivity extends AppCompatActivity {
+public class Endereco extends AppCompatActivity {
 
-    EditText editTextId;
-    EditText editTextCep;
-    EditText editTextNomeEstabelecimento;
+    EditText editTextRua, editTextNumero, editTextComplemento, editTextCep, editTextCidadeEndereco,
+            editTextEstado, editTextPais, editTextRegiao, editTextContinente, editTextCoordenadas;
+
 
     TextView textView;
 
-    Button buttonCriar;
-    Button buttonLer;
-    Button buttonAtualizar;
-    Button buttonDeletar;
+    Button buttonCriar, buttonLer, buttonAtualizar, buttonDeletar;
 
     FirebaseFirestore db;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.tela_endereco);
 
-        db = FirebaseFirestore.getInstance();
-
-        editTextId = findViewById(R.id.editTextId);
+        editTextRua = findViewById(R.id.editTextRua);
+        editTextNumero = findViewById(R.id.editTextNumero);
+        editTextComplemento = findViewById(R.id.editTextComplemento);
         editTextCep = findViewById(R.id.editTextCep);
-        editTextNomeEstabelecimento = findViewById(R.id.editTextNome);
+        editTextCidadeEndereco = findViewById(R.id.editTextCidadeEndereco);
+        editTextEstado = findViewById(R.id.editTextEstado);
+        editTextPais = findViewById(R.id.editTextPais);
+        editTextRegiao = findViewById(R.id.editTextRegiao);
+        editTextContinente = findViewById(R.id.editTextContinente);
+        editTextCoordenadas = findViewById(R.id.editTextCoordenadas);
 
         textView = findViewById(R.id.textView);
 
@@ -58,22 +56,29 @@ public class MainActivity extends AppCompatActivity {
         buttonAtualizar = findViewById(R.id.buttonAtualizar);
         buttonDeletar = findViewById(R.id.buttonDeletar);
 
+        db = FirebaseFirestore.getInstance();
     }
-
 
     public void criar(View view) {
 
         Map<String, Object> colecao = new HashMap<>();
+        colecao.put("rua", editTextRua.getText().toString());
+        colecao.put("numero", editTextNumero.getText().toString());
+        colecao.put("complemento", editTextComplemento.getText().toString());
         colecao.put("cep", editTextCep.getText().toString());
-        colecao.put("nome", editTextNomeEstabelecimento.getText().toString());
+        colecao.put("cidade", editTextCidadeEndereco.getText().toString());
+        colecao.put("estado", editTextEstado.getText().toString());
+        colecao.put("pais", editTextPais.getText().toString());
+        colecao.put("regiao", editTextRegiao.getText().toString());
+        colecao.put("continente", editTextContinente.getText().toString());
+        colecao.put("coordenadas", editTextCoordenadas.getText().toString());
 
-        db.collection("estabelecimento")
+        db.collection("endereco")
                 .add(colecao)
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
-                        editTextId.setText(documentReference.getId());
-                        textView.setText("Cadastrado!");
+                        //textView.setText("Cadastrado!");
                         Toast.makeText(getApplicationContext(), "Criado!.",
                                 Toast.LENGTH_SHORT).show();
                     }
@@ -89,9 +94,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
-    public void ler(View view){
-        DocumentReference docRef = db.collection("estabelecimento").document(editTextId.getText().toString());
+    public void ler(View view) {
+       /* DocumentReference docRef = db.collection("endereco").document(editTextId.getText().toString());
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -108,17 +112,21 @@ public class MainActivity extends AppCompatActivity {
                     }
                 } else {
                     Log.d("TAG", "Falhou em ", task.getException());
-                    Toast.makeText(getApplicationContext(), "Falha!.",
+                    Toast.makeText(getApplicationContext(), "Falha ao ler!.",
                             Toast.LENGTH_SHORT).show();
                 }
             }
-        });
+        });*/
     }
 
 
+    public void atualizar(View view) {
 
-    public void atualizar(View view){
-        db.collection("estabelecimento").document(editTextId.getText().toString()).update("cep", editTextCep.getText().toString(), "nome", editTextNomeEstabelecimento.getText().toString()).addOnSuccessListener(new OnSuccessListener<Void>() {
+       /*db.collection("endereco").document(editTextId.getText().toString()).
+                update("nome", editTextNomeUsuario.getText().toString(), "cpf", editTextCpf.getText().toString()
+                        ,"dataNascimento",editTextDataNascimento.getText().toString(),
+                        "cidade",editTextCidadeNatal.getText().toString(),
+                        "estado", editTextEstado.getText().toString()).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
                 textView.setText("Atualizado!");
@@ -132,18 +140,17 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Falha ao atualizar!.",
                         Toast.LENGTH_SHORT).show();
             }
-        });
+        });*/
     }
 
 
-
-    public void deletar(View view){
-        db.collection("estabelecimento").document(editTextId.getText().toString())
+    public void deletar(View view) {
+        /*db.collection("endereco").document(editTextId.getText().toString())
                 .delete()
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        editTextId.setText("");
+                        limparDados();
                         textView.setText("Deletado!");
                         Toast.makeText(getApplicationContext(), "Deletado!.",
                                 Toast.LENGTH_SHORT).show();
@@ -156,13 +163,20 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Erro ao deletar!.",
                                 Toast.LENGTH_SHORT).show();
                     }
-                });
+                });*/
     }
 
     //após deletar deve limpar os campos
-    public void limparDados(){
-        editTextId.setText("Id do documento");
-        editTextCep.setText("Cep");
-        editTextNomeEstabelecimento.setText("Nome estabelecimento");
+    public void limparDados() {
+        editTextRua.setText("");
+        editTextNumero.setText("");
+        editTextComplemento.setText("");
+        editTextCep.setText("");
+        editTextCidadeEndereco.setText("");
+        editTextEstado.setText("");
+        editTextPais.setText("");
+        editTextRegiao.setText("");
+        editTextContinente.setText("");
+        editTextCoordenadas.setText("");
     }
 }

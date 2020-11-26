@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context=".activity.Endereco">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <EditText
+            android:id="@+id/editTextRua"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="56dp"
+            android:ems="15"
+            android:inputType="textPersonName"
+            android:text="Rua" />
+
+
+        <EditText
+            android:id="@+id/editTextNumero"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="56dp"
+            android:ems="15"
+            android:inputType="textPersonName"
+            android:text="Número" />
+
+        <EditText
+            android:id="@+id/editTextComplemento"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="56dp"
+            android:ems="15"
+            android:inputType="textPersonName"
+            android:text="Complemento" />
+
+        <EditText
+            android:id="@+id/editTextCep"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="56dp"
+            android:ems="15"
+            android:inputType="textPersonName"
+            android:text="Cep" />
+
+        <EditText
+            android:id="@+id/editTextCidadeEndereco"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="56dp"
+            android:ems="15"
+            android:inputType="textPersonName"
+            android:text="Cidade" />
+
+        <EditText
+            android:id="@+id/editTextEstado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="56dp"
+            android:ems="15"
+            android:inputType="textPersonName"
+            android:text="Estado" />
+
+        <EditText
+            android:id="@+id/editTextPais"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="56dp"
+            android:ems="15"
+            android:inputType="textPersonName"
+            android:text="País" />
+
+        <EditText
+            android:id="@+id/editTextRegiao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="56dp"
+            android:ems="15"
+            android:inputType="textPersonName"
+            android:text="Região" />
+
+        <EditText
+            android:id="@+id/editTextContinente"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="56dp"
+            android:ems="15"
+            android:inputType="textPersonName"
+            android:text="Continente" />
+
+        <EditText
+            android:id="@+id/editTextCoordenadas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="56dp"
+            android:ems="15"
+            android:inputType="textPersonName"
+            android:text="Coordenadas" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="20dp"
+            android:text="O que você deseja realizar?"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/buttonCriar"
+            android:layout_width="156dp"
+            android:layout_height="51dp"
+            android:layout_marginLeft="80dp"
+            android:layout_marginTop="30dp"
+            android:onClick="criar"
+            android:text="Criar" />
+
+        <Button
+            android:id="@+id/buttonLer"
+            android:layout_width="156dp"
+            android:layout_height="51dp"
+            android:layout_marginLeft="80dp"
+            android:layout_marginTop="20dp"
+            android:onClick="ler"
+            android:text="Ler" />
+
+        <Button
+            android:id="@+id/buttonAtualizar"
+            android:layout_width="156dp"
+            android:layout_height="51dp"
+            android:layout_marginLeft="80dp"
+            android:layout_marginTop="20dp"
+            android:onClick="atualizar"
+            android:text="Atualizar" />
+
+        <Button
+            android:id="@+id/buttonDeletar"
+            android:layout_width="156dp"
+            android:layout_height="51dp"
+            android:layout_marginLeft="80dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:onClick="deletar"
+            android:text="Deletar" />
+    </LinearLayout>
+</ScrollView>

@@ -11,12 +11,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
@@ -24,39 +21,31 @@ import java.util.Map;
 
 import eduardostertz.cursoandroid.teste.R;
 
-public class User extends AppCompatActivity {
+public class Usuario extends AppCompatActivity {
 
 
-    EditText editTextId;
-    EditText editTextNomeUsuario;
-    EditText editTextCpf;
-    EditText editTextDataNascimento;
-    EditText editTextCidadeNatal;
-    EditText editTextEstado;
+
+    EditText editTextNomeUsuario, editTextCpf, editTextSobrenome,editTextEmail,editTextTipo;
+
 
 
     TextView textView;
 
-    Button buttonCriar;
-    Button buttonLer;
-    Button buttonAtualizar;
-    Button buttonDeletar;
+    Button buttonCriar, buttonLer,buttonAtualizar,buttonDeletar;
 
     FirebaseFirestore db;
-
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user);
+        setContentView(R.layout.tela_usuario);
 
-        editTextId = findViewById(R.id.editTextId);
         editTextNomeUsuario = findViewById(R.id.editTextNomeUsuario);
         editTextCpf = findViewById(R.id.editTextCpf);
-        editTextDataNascimento = findViewById(R.id.editTextDataNascimento);
-        editTextCidadeNatal = findViewById(R.id.editTextCidadeNatal);
-        editTextEstado = findViewById(R.id.editTextEstado);
+        editTextSobrenome = findViewById(R.id.editTextSobrenome);
+        editTextEmail = findViewById(R.id.editTextEmail);
+        editTextTipo = findViewById(R.id.editTextTipo);
 
         textView = findViewById(R.id.textView);
 
@@ -76,17 +65,17 @@ public class User extends AppCompatActivity {
         Map<String, Object> colecao = new HashMap<>();
         colecao.put("nome", editTextNomeUsuario.getText().toString());
         colecao.put("cpf", editTextCpf.getText().toString());
-        colecao.put("dataNascimento", editTextDataNascimento.getText().toString());
-        colecao.put("cidade", editTextCidadeNatal.getText().toString());
-        colecao.put("estado", editTextEstado.getText().toString());
+        colecao.put("sobrenome", editTextSobrenome.getText().toString());
+        colecao.put("email", editTextEmail.getText().toString());
+        colecao.put("tipo", editTextTipo.getText().toString());
 
         db.collection("usuario")
                 .add(colecao)
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
-                        editTextId.setText(documentReference.getId());
-                        textView.setText("Cadastrado!");
+                       // editTextId.setText(documentReference.getId());
+                       // textView.setText("Cadastrado!");
                         Toast.makeText(getApplicationContext(), "Criado!.",
                         Toast.LENGTH_SHORT).show();
                     }
@@ -104,7 +93,7 @@ public class User extends AppCompatActivity {
 
 
     public void ler(View view){
-        DocumentReference docRef = db.collection("usuario").document(editTextId.getText().toString());
+       /* DocumentReference docRef = db.collection("usuario").document(editTextId.getText().toString());
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -125,14 +114,14 @@ public class User extends AppCompatActivity {
                             Toast.LENGTH_SHORT).show();
                 }
             }
-        });
+        });*/
     }
 
 
 
     public void atualizar(View view){
 
-        db.collection("usuario").document(editTextId.getText().toString()).
+        /*db.collection("usuario").document(editTextId.getText().toString()).
                 update("nome", editTextNomeUsuario.getText().toString(), "cpf", editTextCpf.getText().toString()
                 ,"dataNascimento",editTextDataNascimento.getText().toString(),
                        "cidade",editTextCidadeNatal.getText().toString(),
@@ -150,13 +139,13 @@ public class User extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Falha ao atualizar!.",
                         Toast.LENGTH_SHORT).show();
             }
-        });
+        });*/
     }
 
 
 
     public void deletar(View view){
-        db.collection("usuario").document(editTextId.getText().toString())
+       /* db.collection("usuario").document(editTextId.getText().toString())
                 .delete()
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
@@ -174,16 +163,15 @@ public class User extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Erro ao deletar!.",
                                 Toast.LENGTH_SHORT).show();
                     }
-                });
+                });*/
     }
 
     //após deletar deve limpar os campos
     public void limparDados(){
-        editTextId.setText("Id do Usuário");
-        editTextNomeUsuario.setText("Nome");
-        editTextCpf.setText("Cpf");
-        editTextDataNascimento.setText("Data de Nascimenti");
-        editTextCidadeNatal.setText("Cidade");
-        editTextEstado.setText("Estado");
+        editTextNomeUsuario.setText("");
+        editTextNomeUsuario.setText("");
+        editTextNomeUsuario.setText("");
+        editTextNomeUsuario.setText("");
+        editTextNomeUsuario.setText("");
     }
 }
