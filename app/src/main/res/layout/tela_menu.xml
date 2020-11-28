@@ -55,9 +55,9 @@
             android:layout_height="wrap_content"/>
 
         <Button
-            android:id="@+id/btn_cad_reserva"
+            android:id="@+id/btn_cad_unidade"
             android:layout_width="wrap_content"
-            android:text="Nova Reserva"
+            android:text="Cadastro Unidade"
             android:textSize="20dp"
             android:textStyle="bold"
             android:layout_marginTop="10dp"

@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,62 +20,59 @@ import java.util.Map;
 
 import eduardostertz.cursoandroid.teste.R;
 
-public class Propriedade extends AppCompatActivity {
+public class Unidade extends AppCompatActivity {
 
-    EditText editTextNome,editTextDescricao, editTextTipo,editTextCategoria,editTextEmail,editTextTelefone;
 
-    TextView textView;
-
-    Button buttonCriar;
-    Button buttonLer;
-    Button buttonAtualizar;
-    Button buttonDeletar;
+    EditText editTextNomeUnidade, editTextDescricaoUnidade, editTextTipoUnidade,
+    editTextCategoriaUnidade, editTextPropriedadeUnidade, editTextProprietarioUnidade,
+            editTextFotoUnidade , editTextVideoUnidade;
 
     FirebaseFirestore db;
 
+    TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.tela_propriedade);
+        setContentView(R.layout.tela_unidade);
 
-        db = FirebaseFirestore.getInstance();
-
-        editTextNome = findViewById(R.id.editTextNome);
-        editTextDescricao = findViewById(R.id.editTextDescricao);
-        editTextTipo = findViewById(R.id.editTextTipo);
-        editTextCategoria = findViewById(R.id.editTextCategoria);
-        editTextEmail = findViewById(R.id.editTextEmail);
-        editTextTelefone = findViewById(R.id.editTextTelefone);
+        editTextNomeUnidade = findViewById(R.id.editTextNomeUnidade);
+        editTextDescricaoUnidade = findViewById(R.id.editTextDescricaoUnidade);
+        editTextTipoUnidade = findViewById(R.id.editTextTipoUnidade);
+        editTextCategoriaUnidade = findViewById(R.id.editTextCategoriaUnidade);
+        editTextPropriedadeUnidade = findViewById(R.id.editTextPropriedadeUnidade);
+        editTextProprietarioUnidade = findViewById(R.id.editTextProprietarioUnidade);
+        editTextFotoUnidade = findViewById(R.id.editTextFotoUnidade);
+        editTextVideoUnidade = findViewById(R.id.editTextVideoUnidade);
 
 
         textView = findViewById(R.id.textView);
 
-        buttonCriar = findViewById(R.id.buttonCriar);
-        buttonLer = findViewById(R.id.buttonLer);
-        buttonAtualizar = findViewById(R.id.buttonAtualizar);
-        buttonDeletar = findViewById(R.id.buttonDeletar);
-
+        db = FirebaseFirestore.getInstance();
     }
 
 
     public void criar(View view) {
 
-        Map<String, Object> colecao = new HashMap<>();
-        colecao.put("nome", editTextNome.getText().toString());
-        colecao.put("descricao", editTextDescricao.getText().toString());
-        colecao.put("tipo", editTextTipo.getText().toString());
-        colecao.put("categoria", editTextCategoria.getText().toString());
-        colecao.put("email", editTextEmail.getText().toString());
-        colecao.put("telefone", editTextTelefone.getText().toString());
+       Map<String, Object> colecao = new HashMap<>();
+        colecao.put("nome", editTextNomeUnidade.getText().toString());
+        colecao.put("descricao", editTextDescricaoUnidade.getText().toString());
+        colecao.put("tipo", editTextTipoUnidade.getText().toString());
+        colecao.put("categoria", editTextCategoriaUnidade.getText().toString());
+        colecao.put("propriedade", editTextPropriedadeUnidade.getText().toString());
+        colecao.put("proprietario", editTextProprietarioUnidade.getText().toString());
+        colecao.put("foto", editTextFotoUnidade.getText().toString());
+        colecao.put("video", editTextVideoUnidade.getText().toString());
 
-        db.collection("propriedade")
+
+
+        db.collection("unidade")
                 .add(colecao)
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
-                        //editTextId.setText(documentReference.getId());
-                        //textView.setText("Cadastrado!");
+                        // editTextId.setText(documentReference.getId());
+                        // textView.setText("Cadastrado!");
                         Toast.makeText(getApplicationContext(), "Criado!.",
                                 Toast.LENGTH_SHORT).show();
                     }
@@ -94,7 +90,7 @@ public class Propriedade extends AppCompatActivity {
 
 
     public void ler(View view){
-      /*  DocumentReference docRef = db.collection("estabelecimento").document(editTextId.getText().toString());
+       /* DocumentReference docRef = db.collection("usuario").document(editTextId.getText().toString());
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -111,7 +107,7 @@ public class Propriedade extends AppCompatActivity {
                     }
                 } else {
                     Log.d("TAG", "Falhou em ", task.getException());
-                    Toast.makeText(getApplicationContext(), "Falha!.",
+                    Toast.makeText(getApplicationContext(), "Falha ao ler!.",
                             Toast.LENGTH_SHORT).show();
                 }
             }
@@ -121,7 +117,12 @@ public class Propriedade extends AppCompatActivity {
 
 
     public void atualizar(View view){
-       /* db.collection("estabelecimento").document(editTextId.getText().toString()).update("cep", editTextCep.getText().toString(), "nome", editTextNomeEstabelecimento.getText().toString()).addOnSuccessListener(new OnSuccessListener<Void>() {
+
+        /*db.collection("usuario").document(editTextId.getText().toString()).
+                update("nome", editTextNomeUsuario.getText().toString(), "cpf", editTextCpf.getText().toString()
+                ,"dataNascimento",editTextDataNascimento.getText().toString(),
+                       "cidade",editTextCidadeNatal.getText().toString(),
+                       "estado", editTextEstado.getText().toString()).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
                 textView.setText("Atualizado!");
@@ -141,12 +142,12 @@ public class Propriedade extends AppCompatActivity {
 
 
     public void deletar(View view){
-        /*db.collection("estabelecimento").document(editTextId.getText().toString())
+       /* db.collection("usuario").document(editTextId.getText().toString())
                 .delete()
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        editTextId.setText("");
+                        limparDados();
                         textView.setText("Deletado!");
                         Toast.makeText(getApplicationContext(), "Deletado!.",
                                 Toast.LENGTH_SHORT).show();
@@ -164,8 +165,11 @@ public class Propriedade extends AppCompatActivity {
 
     //após deletar deve limpar os campos
     public void limparDados(){
-       /* editTextId.setText("Id do documento");
-        editTextCep.setText("Cep");
-        editTextNomeEstabelecimento.setText("Nome estabelecimento");*/
+       /* editTextNomeUsuario.setText("");
+        editTextNomeUsuario.setText("");
+        editTextNomeUsuario.setText("");
+        editTextNomeUsuario.setText("");
+        editTextNomeUsuario.setText("");*/
+
     }
 }

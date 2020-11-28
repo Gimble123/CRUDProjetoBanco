@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    tools:context=".activity.Endereco">
-
+    android:layout_height="match_parent"
+    tools:context=".activity.Propriedade">
 
     <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
+        android:layout_height="wrap_content">
 
         <TextView
             android:id="@+id/textTitulo"
@@ -19,12 +18,12 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="20dp"
-            android:text="Cadastro de Endereço"
+            android:text="Cadastro de Unidade"
             android:textSize="30sp" />
 
 
         <EditText
-            android:id="@+id/editTextIdEndereco"
+            android:id="@+id/editTextNomeUnidade"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -32,21 +31,10 @@
             android:layout_marginTop="28dp"
             android:ems="15"
             android:inputType="textPersonName"
-            android:hint="ID" />
+            android:hint="Nome"/>
 
         <EditText
-            android:id="@+id/editTextRua"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="28dp"
-            android:ems="15"
-            android:inputType="textPersonName"
-            android:hint="Rua" />
-
-
-        <EditText
-            android:id="@+id/editTextNumero"
+            android:id="@+id/editTextDescricaoUnidade"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -54,10 +42,10 @@
             android:layout_marginTop="28dp"
             android:ems="15"
             android:inputType="textPersonName"
-            android:hint="Número" />
+            android:hint="Descrição"/>
 
         <EditText
-            android:id="@+id/editTextComplemento"
+            android:id="@+id/editTextTipoUnidade"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -65,10 +53,10 @@
             android:layout_marginTop="28dp"
             android:ems="15"
             android:inputType="textPersonName"
-            android:hint="Complemento" />
+            android:hint="Tipo"/>
 
         <EditText
-            android:id="@+id/editTextCep"
+            android:id="@+id/editTextCategoriaUnidade"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -76,10 +64,10 @@
             android:layout_marginTop="28dp"
             android:ems="15"
             android:inputType="textPersonName"
-            android:hint="Cep" />
+            android:hint="Categoria"/>
 
         <EditText
-            android:id="@+id/editTextCidadeEndereco"
+            android:id="@+id/editTextPropriedadeUnidade"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -87,10 +75,10 @@
             android:layout_marginTop="28dp"
             android:ems="15"
             android:inputType="textPersonName"
-            android:hint="Cidade" />
+            android:hint="Propriedade"/>
 
         <EditText
-            android:id="@+id/editTextEstado"
+            android:id="@+id/editTextProprietarioUnidade"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -98,10 +86,10 @@
             android:layout_marginTop="28dp"
             android:ems="15"
             android:inputType="textPersonName"
-            android:hint="Estado" />
+            android:hint="Proprietário"/>
 
         <EditText
-            android:id="@+id/editTextPais"
+            android:id="@+id/editTextFotoUnidade"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -109,10 +97,10 @@
             android:layout_marginTop="28dp"
             android:ems="15"
             android:inputType="textPersonName"
-            android:hint="País" />
+            android:hint="Foto"/>
 
         <EditText
-            android:id="@+id/editTextRegiao"
+            android:id="@+id/editTextVideoUnidade"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -120,29 +108,7 @@
             android:layout_marginTop="28dp"
             android:ems="15"
             android:inputType="textPersonName"
-            android:hint="Região" />
-
-        <EditText
-            android:id="@+id/editTextContinente"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="28dp"
-            android:ems="15"
-            android:inputType="textPersonName"
-            android:hint="Continente" />
-
-        <EditText
-            android:id="@+id/editTextCoordenadas"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="28dp"
-            android:ems="15"
-            android:inputType="textPersonName"
-            android:hint="Coordenadas" />
+            android:hint="Vídeo"/>
 
         <TextView
             android:id="@+id/textView"
@@ -189,5 +155,6 @@
             android:layout_marginTop="20dp"
             android:onClick="deletar"
             android:text="Deletar" />
+
     </LinearLayout>
 </ScrollView>

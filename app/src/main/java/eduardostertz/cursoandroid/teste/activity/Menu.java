@@ -47,5 +47,15 @@ public class Menu extends AppCompatActivity {
             }
         });
 
+        Button btn_cad_unidade;
+        btn_cad_unidade = (Button) findViewById(R.id.btn_cad_unidade);
+        btn_cad_unidade.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(), Unidade.class);
+                startActivity(i);
+            }
+        });
+
     }
 }
