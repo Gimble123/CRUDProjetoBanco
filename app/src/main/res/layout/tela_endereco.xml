@@ -21,7 +21,7 @@
             android:layout_marginTop="56dp"
             android:ems="15"
             android:inputType="textPersonName"
-            android:text="Rua" />
+            android:hint="Rua" />
 
 
         <EditText
@@ -32,7 +32,7 @@
             android:layout_marginTop="56dp"
             android:ems="15"
             android:inputType="textPersonName"
-            android:text="Número" />
+            android:hint="Número" />
 
         <EditText
             android:id="@+id/editTextComplemento"
@@ -42,7 +42,7 @@
             android:layout_marginTop="56dp"
             android:ems="15"
             android:inputType="textPersonName"
-            android:text="Complemento" />
+            android:hint="Complemento" />
 
         <EditText
             android:id="@+id/editTextCep"
@@ -52,7 +52,7 @@
             android:layout_marginTop="56dp"
             android:ems="15"
             android:inputType="textPersonName"
-            android:text="Cep" />
+            android:hint="Cep" />
 
         <EditText
             android:id="@+id/editTextCidadeEndereco"
@@ -62,7 +62,7 @@
             android:layout_marginTop="56dp"
             android:ems="15"
             android:inputType="textPersonName"
-            android:text="Cidade" />
+            android:hint="Cidade" />
 
         <EditText
             android:id="@+id/editTextEstado"
@@ -72,7 +72,7 @@
             android:layout_marginTop="56dp"
             android:ems="15"
             android:inputType="textPersonName"
-            android:text="Estado" />
+            android:hint="Estado" />
 
         <EditText
             android:id="@+id/editTextPais"
@@ -82,7 +82,7 @@
             android:layout_marginTop="56dp"
             android:ems="15"
             android:inputType="textPersonName"
-            android:text="País" />
+            android:hint="País" />
 
         <EditText
             android:id="@+id/editTextRegiao"

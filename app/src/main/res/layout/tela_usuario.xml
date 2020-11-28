@@ -22,7 +22,7 @@
             android:layout_marginTop="28dp"
             android:ems="15"
             android:inputType="textPersonName"
-            android:text="Nome" />
+            android:hint="Nome" />
 
         <EditText
             android:id="@+id/editTextSobrenome"
@@ -33,7 +33,7 @@
             android:layout_marginTop="28dp"
             android:ems="15"
             android:inputType="textPersonName"
-            android:text="Sobrenome" />
+            android:hint="Sobrenome" />
 
         <EditText
             android:id="@+id/editTextCpf"
@@ -44,7 +44,7 @@
             android:layout_marginTop="28dp"
             android:ems="15"
             android:inputType="textPersonName"
-            android:text="Cpf" />
+            android:hint="Cpf" />
 
 
         <EditText
@@ -56,7 +56,7 @@
             android:layout_marginTop="28dp"
             android:ems="15"
             android:inputType="textPersonName"
-            android:text="Email" />
+            android:hint="Email" />
 
         <EditText
             android:id="@+id/editTextTipo"
@@ -67,7 +67,7 @@
             android:layout_marginTop="28dp"
             android:ems="15"
             android:inputType="textPersonName"
-            android:text="Tipo(P/G)" />
+            android:hint="Tipo(P/G)" />
 
         <TextView
             android:id="@+id/textView"
