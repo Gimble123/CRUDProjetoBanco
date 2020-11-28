@@ -14,14 +14,14 @@ public class Menu extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_menu);
+        setContentView(R.layout.tela_menu);
 
         Button btn_cad_user;
         btn_cad_user = (Button) findViewById(R.id.btn_cad_user);
         btn_cad_user.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(), User.class);
+                Intent i = new Intent(getApplicationContext(), Usuario.class);
                 startActivity(i);
             }
         });
@@ -31,7 +31,18 @@ public class Menu extends AppCompatActivity {
         btn_cad_estabelecimentos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                Intent i = new Intent(getApplicationContext(), Propiedade.class);
+                startActivity(i);
+            }
+        });
+
+
+        Button btn_cad_enderecos;
+        btn_cad_enderecos = (Button) findViewById(R.id.btn_cad_enderecos);
+        btn_cad_enderecos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(), Endereco.class);
                 startActivity(i);
             }
         });
