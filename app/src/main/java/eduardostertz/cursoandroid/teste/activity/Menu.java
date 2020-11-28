@@ -31,7 +31,7 @@ public class Menu extends AppCompatActivity {
         btn_cad_estabelecimentos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(), Propiedade.class);
+                Intent i = new Intent(getApplicationContext(), Propriedade.class);
                 startActivity(i);
             }
         });

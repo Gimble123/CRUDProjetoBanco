@@ -19,7 +19,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.Propiedade" />
+        <activity android:name=".activity.Propriedade" />
         <activity android:name=".activity.Usuario" />
     </application>
 

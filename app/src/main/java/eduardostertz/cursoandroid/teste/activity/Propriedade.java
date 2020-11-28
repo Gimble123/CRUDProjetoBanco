@@ -21,7 +21,7 @@ import java.util.Map;
 
 import eduardostertz.cursoandroid.teste.R;
 
-public class Propiedade extends AppCompatActivity {
+public class Propriedade extends AppCompatActivity {
 
     EditText editTextNome,editTextDescricao, editTextTipo,editTextCategoria,editTextEmail,editTextTelefone;
 
@@ -38,7 +38,7 @@ public class Propiedade extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.tela_propiedade);
+        setContentView(R.layout.tela_propriedade);
 
         db = FirebaseFirestore.getInstance();
 

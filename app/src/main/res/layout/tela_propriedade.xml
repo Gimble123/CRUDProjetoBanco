@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.Propiedade">
+    tools:context=".activity.Propriedade">
 
     <LinearLayout
         android:orientation="vertical"
@@ -15,110 +15,115 @@
 
         <EditText
             android:id="@+id/editTextNome"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             android:layout_marginTop="28dp"
-            android:layout_marginLeft="30dp"
             android:ems="15"
             android:inputType="textPersonName"
-            android:text="Nome da Propiedade" />
+            android:text="Nome da Propriedade" />
 
         <EditText
             android:id="@+id/editTextDescricao"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             android:layout_marginTop="28dp"
-            android:layout_marginLeft="30dp"
             android:ems="15"
             android:inputType="textPersonName"
             android:text="Descrição" />
 
         <EditText
             android:id="@+id/editTextTipo"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             android:layout_marginTop="28dp"
-            android:layout_marginLeft="30dp"
             android:ems="15"
             android:inputType="textPersonName"
             android:text="Tipo(H/R)" />
 
         <EditText
             android:id="@+id/editTextCategoria"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             android:layout_marginTop="28dp"
-            android:layout_marginLeft="30dp"
             android:ems="15"
             android:inputType="textPersonName"
             android:text="Categoria" />
 
         <EditText
             android:id="@+id/editTextEmail"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             android:layout_marginTop="28dp"
-            android:layout_marginLeft="30dp"
             android:ems="15"
             android:inputType="textPersonName"
             android:text="Email" />
 
         <EditText
             android:id="@+id/editTextTelefone"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             android:layout_marginTop="28dp"
-            android:layout_marginLeft="30dp"
             android:ems="15"
             android:inputType="textPersonName"
             android:text="Telefone" />
 
         <TextView
             android:id="@+id/textView"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="30dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="28dp"
             android:text="O que você deseja realizar?"
             android:textSize="20sp" />
 
         <Button
             android:id="@+id/buttonCriar"
-            android:layout_width="156dp"
-            android:layout_height="51dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginLeft="80dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:layout_marginTop="28dp"
             android:onClick="criar"
             android:text="Criar" />
 
         <Button
             android:id="@+id/buttonLer"
-            android:layout_width="156dp"
-            android:layout_height="51dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center"
             android:layout_marginTop="20dp"
-            android:layout_marginLeft="80dp"
             android:onClick="ler"
             android:text="Ler" />
 
         <Button
             android:id="@+id/buttonAtualizar"
-            android:layout_width="156dp"
-            android:layout_height="51dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center"
             android:layout_marginTop="20dp"
-            android:layout_marginLeft="80dp"
             android:onClick="atualizar"
             android:text="Atualizar" />
 
         <Button
             android:id="@+id/buttonDeletar"
-            android:layout_width="156dp"
-            android:layout_height="51dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center"
             android:layout_marginTop="20dp"
-            android:layout_marginLeft="80dp"
-            android:layout_marginBottom="20dp"
             android:onClick="deletar"
             android:text="Deletar" />
-
 
     </LinearLayout>
 </ScrollView>
