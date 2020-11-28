@@ -11,9 +11,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
@@ -24,7 +27,7 @@ import eduardostertz.cursoandroid.teste.R;
 public class Endereco extends AppCompatActivity {
 
     EditText editTextRua, editTextNumero, editTextComplemento, editTextCep, editTextCidadeEndereco,
-            editTextEstado, editTextPais, editTextRegiao, editTextContinente, editTextCoordenadas;
+            editTextEstado, editTextPais, editTextRegiao, editTextContinente, editTextCoordenadas, editTextIdEndereco;
 
 
     TextView textView;
@@ -48,6 +51,7 @@ public class Endereco extends AppCompatActivity {
         editTextRegiao = findViewById(R.id.editTextRegiao);
         editTextContinente = findViewById(R.id.editTextContinente);
         editTextCoordenadas = findViewById(R.id.editTextCoordenadas);
+        editTextIdEndereco = findViewById(R.id.editTextIdEndereco);
 
         textView = findViewById(R.id.textView);
 
@@ -95,14 +99,15 @@ public class Endereco extends AppCompatActivity {
 
 
     public void ler(View view) {
-       /* DocumentReference docRef = db.collection("endereco").document(editTextId.getText().toString());
+       DocumentReference docRef = db.collection("endereco").document(editTextIdEndereco.getText().toString());
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 if (task.isSuccessful()) {
                     DocumentSnapshot document = task.getResult();
                     if (document.exists()) {
-                        textView.setText(editTextId.getText().toString());
+                        textView.setText("ID: " + document.getId() + "\nRua: " + document.get("rua") +
+                                "\nNúmero: " + document.get("numero"));
                         Toast.makeText(getApplicationContext(), "Documento encontrado!.",
                                 Toast.LENGTH_SHORT).show();
                     } else {
@@ -116,7 +121,7 @@ public class Endereco extends AppCompatActivity {
                             Toast.LENGTH_SHORT).show();
                 }
             }
-        });*/
+        });
     }
 
 

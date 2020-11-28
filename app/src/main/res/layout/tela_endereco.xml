@@ -14,6 +14,16 @@
 
 
         <EditText
+            android:id="@+id/editTextIdEndereco"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="56dp"
+            android:ems="15"
+            android:inputType="textPersonName"
+            android:text="ID" />
+
+        <EditText
             android:id="@+id/editTextRua"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
