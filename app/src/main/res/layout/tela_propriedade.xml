@@ -21,6 +21,17 @@
             android:text="Cadastro de Propriedade"
             android:textSize="30sp" />
 
+        <EditText
+            android:id="@+id/editTextIdDaPropiedade"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="28dp"
+            android:ems="15"
+            android:inputType="textPersonName"
+            android:hint="ID da Propriedade"/>
+
 
         <EditText
             android:id="@+id/editTextNome"
@@ -87,6 +98,17 @@
             android:ems="15"
             android:inputType="textPersonName"
             android:hint="Telefone" />
+
+        <EditText
+            android:id="@+id/editTextEnderecoProp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="28dp"
+            android:ems="15"
+            android:inputType="textPersonName"
+            android:hint="Id do endereco" />
 
         <TextView
             android:id="@+id/textView"

@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,63 +15,90 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 import eduardostertz.cursoandroid.teste.R;
 
-public class Propriedade extends AppCompatActivity {
+public class Hospedagem extends AppCompatActivity {
 
-    EditText editTextNome,editTextDescricao, editTextTipo,editTextCategoria,editTextEmail,editTextTelefone, editTextIdDaPropiedade, editTextEnderecoProp;
+
+    EditText editTextIDPropriedadeHosp, editTextIDunidadeHosp, editTextDataEntrada, editTextDataSaida, editTextIDUsuarioHosp, editTextIDHospedagem, editTextValorHosp;
 
     TextView textView;
 
-    Button buttonCriar;
-    Button buttonLer;
-    Button buttonAtualizar;
-    Button buttonDeletar;
-
     FirebaseFirestore db;
 
+    long days;
+
+    String dayDifference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.tela_propriedade);
+        setContentView(R.layout.tela_hospedagem);
 
-        db = FirebaseFirestore.getInstance();
-
-        editTextNome = findViewById(R.id.editTextNome);
-        editTextDescricao = findViewById(R.id.editTextDescricao);
-        editTextTipo = findViewById(R.id.editTextTipo);
-        editTextCategoria = findViewById(R.id.editTextCategoria);
-        editTextEmail = findViewById(R.id.editTextEmail);
-        editTextTelefone = findViewById(R.id.editTextTelefone);
-        editTextIdDaPropiedade = findViewById(R.id.editTextIdDaPropiedade);
-        editTextEnderecoProp = findViewById(R.id.editTextEnderecoProp);
+        editTextIDPropriedadeHosp = findViewById(R.id.editTextIDPropriedadeHosp);
+        editTextIDunidadeHosp = findViewById(R.id.editTextIDunidadeHosp);
+        editTextDataEntrada = findViewById(R.id.editTextDataEntrada);
+        editTextDataSaida = findViewById(R.id.editTextDataSaida);
+        editTextIDUsuarioHosp = findViewById(R.id.editTextIDUsuarioHosp);
+        editTextIDHospedagem = findViewById(R.id.editTextIDHospedagem);
+        editTextValorHosp = findViewById(R.id.editTextValorHosp);
 
         textView = findViewById(R.id.textView);
 
-        buttonCriar = findViewById(R.id.buttonCriar);
-        buttonLer = findViewById(R.id.buttonLer);
-        buttonAtualizar = findViewById(R.id.buttonAtualizar);
-        buttonDeletar = findViewById(R.id.buttonDeletar);
+
+        db = FirebaseFirestore.getInstance();
 
     }
 
-
     public void criar(View view) {
 
-        Map<String, Object> colecao = new HashMap<>();
-        colecao.put("nome", editTextNome.getText().toString());
-        colecao.put("descricao", editTextDescricao.getText().toString());
-        colecao.put("tipo", editTextTipo.getText().toString());
-        colecao.put("categoria", editTextCategoria.getText().toString());
-        colecao.put("email", editTextEmail.getText().toString());
-        colecao.put("telefone", editTextTelefone.getText().toString());
-        colecao.put("endereco", editTextEnderecoProp.getText().toString());
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
 
-        db.collection("propriedade")
+
+        Date startDateValue = null;
+
+        try {
+            startDateValue = format.parse(editTextDataEntrada.getText().toString());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        Date endDateValue = null;
+
+        try {
+            endDateValue = format.parse(editTextDataSaida.getText().toString());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+
+        long difference = Math.abs(endDateValue.getTime() - startDateValue.getTime());
+        long differenceDates = difference / (24 * 60 * 60 * 1000);
+        dayDifference = Long.toString(differenceDates);
+
+        float total = Float.parseFloat(editTextValorHosp.getText().toString()) * Float.parseFloat(dayDifference);
+
+
+
+        Map<String, Object> colecao = new HashMap<>();
+        colecao.put("propiedade", editTextIDPropriedadeHosp.getText().toString());
+        colecao.put("Unidade", editTextIDunidadeHosp.getText().toString());
+        colecao.put("dataEntrada", editTextDataEntrada.getText().toString());
+        colecao.put("dataSaida", editTextDataSaida.getText().toString());
+        colecao.put("usuario", editTextIDUsuarioHosp.getText().toString());
+        colecao.put("valorDiaria", editTextValorHosp.getText().toString());
+        colecao.put("valorTotal", total);
+
+
+
+        db.collection("hospedagem")
                 .add(colecao)
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
@@ -81,6 +107,7 @@ public class Propriedade extends AppCompatActivity {
                         //textView.setText("Cadastrado!");
                         Toast.makeText(getApplicationContext(), "Criado!.",
                                 Toast.LENGTH_SHORT).show();
+
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -124,9 +151,9 @@ public class Propriedade extends AppCompatActivity {
 
     public void atualizar(View view){
 
-       db.collection("propriedade").document(editTextIdDaPropiedade.getText().toString())
-               .update("nome", editTextNome.getText().toString(), "descricao", editTextDescricao.getText().toString(),
-                       "tipo",editTextTipo.getText().toString(), "categoria", editTextCategoria.getText().toString(),
+        /*db.collection("propriedade").document(editTextIdDaPropiedade.getText().toString())
+                .update("nome", editTextNome.getText().toString(), "descricao", editTextDescricao.getText().toString(),
+                        "tipo",editTextTipo.getText().toString(), "categoria", editTextCategoria.getText().toString(),
                         "email", editTextEmail.getText().toString(), "telefone", editTextTelefone.getText().toString()).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
@@ -140,13 +167,13 @@ public class Propriedade extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Falha ao atualizar!.",
                         Toast.LENGTH_SHORT).show();
             }
-        });
+        });*/
     }
 
 
 
     public void deletar(View view){
-        db.collection("propriedade").document(editTextIdDaPropiedade.getText().toString())
+        /*db.collection("propriedade").document(editTextIdDaPropiedade.getText().toString())
                 .delete()
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
@@ -162,7 +189,7 @@ public class Propriedade extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Erro ao deletar!.",
                                 Toast.LENGTH_SHORT).show();
                     }
-                });
+                });*/
     }
 
     //após deletar deve limpar os campos

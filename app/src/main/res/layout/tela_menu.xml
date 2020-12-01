@@ -64,6 +64,16 @@
             android:layout_gravity="center"
             android:layout_height="wrap_content"/>
 
+        <Button
+            android:id="@+id/btn_cad_hospedagem"
+            android:layout_width="wrap_content"
+            android:text="Hospedagem"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"/>
+
 
 
     </LinearLayout>

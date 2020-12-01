@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+ <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".activity.Hospedagem">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/textTitulo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:text="Cadastro de Hospedagem"
+                android:textSize="30sp" />
+
+            <EditText
+                android:id="@+id/editTextIDHospedagem"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="28dp"
+                android:ems="15"
+                android:inputType="textPersonName"
+                android:hint="Id da Hospedagem"/>
+
+            <EditText
+                android:id="@+id/editTextIDPropriedadeHosp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="28dp"
+                android:ems="15"
+                android:inputType="textPersonName"
+                android:hint="Id da Propiedade"/>
+
+            <EditText
+                android:id="@+id/editTextIDunidadeHosp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="28dp"
+                android:ems="15"
+                android:inputType="textPersonName"
+                android:hint="Id da Unidade"/>
+
+            <EditText
+                android:id="@+id/editTextDataEntrada"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="28dp"
+                android:ems="15"
+                android:inputType="textPersonName"
+                android:hint="Data Entrada"/>
+
+            <EditText
+                android:id="@+id/editTextDataSaida"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="28dp"
+                android:ems="15"
+                android:inputType="textPersonName"
+                android:hint="Data Saída"/>
+
+            <EditText
+                android:id="@+id/editTextIDUsuarioHosp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="28dp"
+                android:ems="15"
+                android:inputType="textPersonName"
+                android:hint="Id do Usuário"/>
+
+            <EditText
+                android:id="@+id/editTextValorHosp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="28dp"
+                android:ems="15"
+                android:inputType="textPersonName"
+                android:hint="Valor da diária"/>
+
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="28dp"
+                android:text="O que você deseja realizar?"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/buttonCriar"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:layout_marginTop="28dp"
+                android:onClick="criar"
+                android:text="Criar" />
+
+            <Button
+                android:id="@+id/buttonLer"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:layout_marginTop="20dp"
+                android:onClick="ler"
+                android:text="Ler" />
+
+            <Button
+                android:id="@+id/buttonAtualizar"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:layout_marginTop="20dp"
+                android:onClick="atualizar"
+                android:text="Atualizar" />
+
+            <Button
+                android:id="@+id/buttonDeletar"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:layout_marginTop="20dp"
+                android:onClick="deletar"
+                android:text="Deletar" />
+
+            <TextView
+                android:id="@+id/textViewLeituraDados"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="28dp"
+                android:text=""
+                android:textSize="20sp" />
+
+    </LinearLayout>
+ </ScrollView>

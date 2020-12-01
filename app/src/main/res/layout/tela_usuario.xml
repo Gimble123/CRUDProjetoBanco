@@ -22,6 +22,17 @@
             android:textSize="30sp" />
 
         <EditText
+            android:id="@+id/editTextIDdoUsuario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="28dp"
+            android:ems="15"
+            android:inputType="textPersonName"
+            android:hint="Id do usário" />
+
+        <EditText
             android:id="@+id/editTextNomeUsuario"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -76,6 +87,17 @@
             android:ems="15"
             android:inputType="textPersonName"
             android:hint="Tipo(P/G)" />
+
+        <EditText
+            android:id="@+id/editTextEnderecoUsuario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="28dp"
+            android:ems="15"
+            android:inputType="textPersonName"
+            android:hint="Id do Endereço" />
 
         <TextView
             android:id="@+id/textView"

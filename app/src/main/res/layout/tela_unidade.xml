@@ -23,6 +23,28 @@
 
 
         <EditText
+            android:id="@+id/editTextIDPropriedade"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="28dp"
+            android:ems="15"
+            android:inputType="textPersonName"
+            android:hint="ID da propiedade"/>
+
+        <EditText
+            android:id="@+id/editTextIDUnidade"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="28dp"
+            android:ems="15"
+            android:inputType="textPersonName"
+            android:hint="ID da unidade"/>
+
+        <EditText
             android:id="@+id/editTextNomeUnidade"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -66,16 +88,6 @@
             android:inputType="textPersonName"
             android:hint="Categoria"/>
 
-        <EditText
-            android:id="@+id/editTextPropriedadeUnidade"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="28dp"
-            android:ems="15"
-            android:inputType="textPersonName"
-            android:hint="Propriedade"/>
 
         <EditText
             android:id="@+id/editTextProprietarioUnidade"
@@ -155,6 +167,16 @@
             android:layout_marginTop="20dp"
             android:onClick="deletar"
             android:text="Deletar" />
+
+        <TextView
+            android:id="@+id/textViewLeituraDados"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="28dp"
+            android:text=""
+            android:textSize="20sp" />
 
     </LinearLayout>
 </ScrollView>

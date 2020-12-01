@@ -25,7 +25,7 @@ public class Usuario extends AppCompatActivity {
 
 
 
-    EditText editTextNomeUsuario, editTextCpf, editTextSobrenome,editTextEmail,editTextTipo;
+    EditText editTextNomeUsuario, editTextCpf, editTextSobrenome,editTextEmail,editTextTipo, editTextIDdoUsuario, editTextEnderecoUsuario;
 
 
 
@@ -46,6 +46,8 @@ public class Usuario extends AppCompatActivity {
         editTextSobrenome = findViewById(R.id.editTextSobrenome);
         editTextEmail = findViewById(R.id.editTextEmail);
         editTextTipo = findViewById(R.id.editTextTipo);
+        editTextIDdoUsuario = findViewById(R.id.editTextIDdoUsuario);
+        editTextEnderecoUsuario = findViewById(R.id.editTextEnderecoUsuario);
 
         textView = findViewById(R.id.textView);
 
@@ -68,6 +70,7 @@ public class Usuario extends AppCompatActivity {
         colecao.put("sobrenome", editTextSobrenome.getText().toString());
         colecao.put("email", editTextEmail.getText().toString());
         colecao.put("tipo", editTextTipo.getText().toString());
+        colecao.put("endereco", editTextEnderecoUsuario.getText().toString());
 
         db.collection("usuario")
                 .add(colecao)
@@ -121,14 +124,14 @@ public class Usuario extends AppCompatActivity {
 
     public void atualizar(View view){
 
-        /*db.collection("usuario").document(editTextId.getText().toString()).
+
+        db.collection("usuario").document(editTextIDdoUsuario.getText().toString()).
                 update("nome", editTextNomeUsuario.getText().toString(), "cpf", editTextCpf.getText().toString()
-                ,"dataNascimento",editTextDataNascimento.getText().toString(),
-                       "cidade",editTextCidadeNatal.getText().toString(),
-                       "estado", editTextEstado.getText().toString()).addOnSuccessListener(new OnSuccessListener<Void>() {
+                ,"sobrenome",editTextSobrenome.getText().toString(),
+                       "email",editTextEmail.getText().toString(),
+                       "tipo", editTextTipo.getText().toString()).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
-                textView.setText("Atualizado!");
                 Toast.makeText(getApplicationContext(), "Atualizado!.",
                         Toast.LENGTH_SHORT).show();
             }
@@ -139,13 +142,13 @@ public class Usuario extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Falha ao atualizar!.",
                         Toast.LENGTH_SHORT).show();
             }
-        });*/
+        });
     }
 
 
 
     public void deletar(View view){
-       /* db.collection("usuario").document(editTextId.getText().toString())
+       db.collection("usuario").document(editTextIDdoUsuario.getText().toString())
                 .delete()
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
@@ -163,7 +166,7 @@ public class Usuario extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Erro ao deletar!.",
                                 Toast.LENGTH_SHORT).show();
                     }
-                });*/
+                });
     }
 
     //após deletar deve limpar os campos
