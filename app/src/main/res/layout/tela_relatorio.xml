@@ -53,7 +53,7 @@
             android:layout_marginTop="28dp"
             android:gravity="center"
             android:onClick="lerPropiedades"
-            android:text="Relatório de Propiedades" />
+            android:text="Relatório de Propriedades" />
 
         <EditText
             android:id="@+id/editTextIdpropiedadeConsulta"
@@ -64,7 +64,7 @@
             android:layout_marginTop="28dp"
             android:ems="15"
             android:inputType="textPersonName"
-            android:hint="Digite o ID da Propiedade" />
+            android:hint="Digite o ID da Propriedade" />
 
         <Button
             android:id="@+id/buttonLerUnidadesProp"
@@ -73,7 +73,7 @@
             android:layout_marginTop="28dp"
             android:gravity="center"
             android:onClick="lerUnidadePropiedade"
-            android:text="Relatório de Unidades da Propiedade" />
+            android:text="Relatório de Unidades da Propriedade" />
 
         <EditText
             android:id="@+id/editTextEnderecoRegiao"
