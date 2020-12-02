@@ -93,7 +93,7 @@
             android:layout_marginTop="28dp"
             android:gravity="center"
             android:onClick="lerRegiaoEndereco"
-            android:text="Digite a Região" />
+            android:text="Relatório Endereços da Região" />
 
 
         <EditText

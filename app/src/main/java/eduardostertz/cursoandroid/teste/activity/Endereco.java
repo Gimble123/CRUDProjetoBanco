@@ -198,15 +198,15 @@ public class Endereco extends AppCompatActivity {
                     DocumentSnapshot document = task.getResult();
                     if (document.exists()) {
                         editTextIdEndereco.setText(document.getId().toString());
-                        editTextRua.setText(document.get("rua").toString() != null? document.get("rua").toString() : "");
-                        editTextNumero.setText(document.get("numero").toString() != null? document.get("numero").toString() : "");
-                        editTextComplemento.setText(document.get("complemento").toString() != null? document.get("complemento").toString() : "");
-                        editTextCep.setText(document.get("cep").toString() != null? document.get("cep").toString() : "");
-                        editTextCidadeEndereco.setText(document.get("cidade").toString() != null? document.get("cidade").toString() : "");
-                        editTextEstado.setText(document.get("estado").toString() != null? document.get("estado").toString() : "");
-                        editTextPais.setText(document.get("pais").toString() != null? document.get("pais").toString() : "");
-                        editTextRegiao.setText(document.get("regiao").toString() != null? document.get("regiao").toString() : "");
-                        editTextContinente.setText(document.get("continente").toString() != null? document.get("continente").toString() : "");
+                        editTextRua.setText(document.get("rua") != null? document.get("rua").toString() : "");
+                        editTextNumero.setText(document.get("numero") != null? document.get("numero").toString() : "");
+                        editTextComplemento.setText(document.get("complemento") != null? document.get("complemento").toString() : "");
+                        editTextCep.setText(document.get("cep") != null? document.get("cep").toString() : "");
+                        editTextCidadeEndereco.setText(document.get("cidade") != null? document.get("cidade").toString() : "");
+                        editTextEstado.setText(document.get("estado") != null? document.get("estado").toString() : "");
+                        editTextPais.setText(document.get("pais") != null? document.get("pais").toString() : "");
+                        editTextRegiao.setText(document.get("regiao") != null? document.get("regiao").toString() : "");
+                        editTextContinente.setText(document.get("continente") != null? document.get("continente").toString() : "");
                         editTextLatitude.setText(document.get("latitude") != null? document.get("latitude").toString() : "");
                         editTextLongitude.setText(document.get("longitude") != null? document.get("longitude").toString() : "");
                         Toast.makeText(getApplicationContext(), "Documento encontrado!.",
