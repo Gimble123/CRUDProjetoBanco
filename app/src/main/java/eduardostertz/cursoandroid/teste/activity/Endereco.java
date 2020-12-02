@@ -27,12 +27,12 @@ import eduardostertz.cursoandroid.teste.R;
 public class Endereco extends AppCompatActivity {
 
     EditText editTextRua, editTextNumero, editTextComplemento, editTextCep, editTextCidadeEndereco,
-            editTextEstado, editTextPais, editTextRegiao, editTextContinente, editTextCoordenadas, editTextIdEndereco;
+            editTextEstado, editTextPais, editTextRegiao, editTextContinente, editTextLatitude, editTextLongitude, editTextIdEndereco;
 
 
-    TextView textView;
+    TextView textView, textViewLeitura;
 
-    Button buttonCriar, buttonLer, buttonAtualizar, buttonDeletar;
+    Button buttonCriar, buttonLer, buttonAtualizar, buttonDeletar, buttonCarregarDados;
 
     FirebaseFirestore db;
 
@@ -50,15 +50,18 @@ public class Endereco extends AppCompatActivity {
         editTextPais = findViewById(R.id.editTextPais);
         editTextRegiao = findViewById(R.id.editTextRegiao);
         editTextContinente = findViewById(R.id.editTextContinente);
-        editTextCoordenadas = findViewById(R.id.editTextCoordenadas);
+        editTextLatitude = findViewById(R.id.editTextLatitude);
+        editTextLongitude = findViewById(R.id.editTextLongitude);
         editTextIdEndereco = findViewById(R.id.editTextIdEndereco);
 
         textView = findViewById(R.id.textView);
+        textViewLeitura = findViewById(R.id.textViewLeitura);
 
         buttonCriar = findViewById(R.id.buttonCriar);
         buttonLer = findViewById(R.id.buttonLer);
         buttonAtualizar = findViewById(R.id.buttonAtualizar);
         buttonDeletar = findViewById(R.id.buttonDeletar);
+        buttonCarregarDados = findViewById(R.id.buttonCarregarDados);
 
         db = FirebaseFirestore.getInstance();
     }
@@ -75,7 +78,8 @@ public class Endereco extends AppCompatActivity {
         colecao.put("pais", editTextPais.getText().toString());
         colecao.put("regiao", editTextRegiao.getText().toString());
         colecao.put("continente", editTextContinente.getText().toString());
-        colecao.put("coordenadas", editTextCoordenadas.getText().toString());
+        colecao.put("latitude", editTextLatitude.getText().toString());
+        colecao.put("longitude", editTextLongitude.getText().toString());
 
         db.collection("endereco")
                 .add(colecao)
@@ -99,15 +103,24 @@ public class Endereco extends AppCompatActivity {
 
 
     public void ler(View view) {
-       DocumentReference docRef = db.collection("endereco").document(editTextIdEndereco.getText().toString());
+      final DocumentReference docRef = db.collection("endereco").document(editTextIdEndereco.getText().toString());
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 if (task.isSuccessful()) {
                     DocumentSnapshot document = task.getResult();
                     if (document.exists()) {
-                        textView.setText("ID: " + document.getId() + "\nRua: " + document.get("rua") +
-                                "\nNúmero: " + document.get("numero"));
+                        textViewLeitura.setText("ID: " + document.getId() + "\nRua: " + document.get("rua") +
+                                "\nNúmero: " + document.get("numero") +
+                                "\nComplemento: " + document.get("complemento") +
+                                "\nCep: " + document.get("cep") +
+                                "\nCidade: " + document.get("cidade") +
+                                "\nEstado: " + document.get("estado") +
+                                "\nPaís: " + document.get("pais") +
+                                "\nRegião: " + document.get("regiao") +
+                                "\nContinente: " + document.get("continente") +
+                                "\nLatitude: " + document.get("latitude") +
+                                "\nLongitude: " + document.get("longitude"));
                         Toast.makeText(getApplicationContext(), "Documento encontrado!.",
                                 Toast.LENGTH_SHORT).show();
                     } else {
@@ -127,14 +140,21 @@ public class Endereco extends AppCompatActivity {
 
     public void atualizar(View view) {
 
-       /*db.collection("endereco").document(editTextId.getText().toString()).
-                update("nome", editTextNomeUsuario.getText().toString(), "cpf", editTextCpf.getText().toString()
-                        ,"dataNascimento",editTextDataNascimento.getText().toString(),
-                        "cidade",editTextCidadeNatal.getText().toString(),
-                        "estado", editTextEstado.getText().toString()).addOnSuccessListener(new OnSuccessListener<Void>() {
+        db.collection("endereco").document(editTextIdEndereco.getText().toString())
+                .update("rua", editTextRua.getText().toString(),
+                        "numero",editTextNumero.getText().toString(),
+                        "complemento",editTextComplemento.getText().toString(),
+                        "cep", editTextCep.getText().toString(),
+                        "cidade", editTextCidadeEndereco.getText().toString(),
+                        "estado", editTextEstado.getText().toString(),
+                        "pais", editTextPais.getText().toString(),
+                        "regiao", editTextRegiao.getText().toString(),
+                        "continente", editTextContinente.getText().toString(),
+                        "latitude", editTextLatitude.getText().toString(),
+                        "longitude", editTextLongitude.getText().toString()
+                        ).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
-                textView.setText("Atualizado!");
                 Toast.makeText(getApplicationContext(), "Atualizado!.",
                         Toast.LENGTH_SHORT).show();
             }
@@ -145,18 +165,16 @@ public class Endereco extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Falha ao atualizar!.",
                         Toast.LENGTH_SHORT).show();
             }
-        });*/
+        });
     }
 
 
     public void deletar(View view) {
-        /*db.collection("endereco").document(editTextId.getText().toString())
+        db.collection("endereco").document(editTextIdEndereco.getText().toString())
                 .delete()
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        limparDados();
-                        textView.setText("Deletado!");
                         Toast.makeText(getApplicationContext(), "Deletado!.",
                                 Toast.LENGTH_SHORT).show();
                     }
@@ -168,8 +186,45 @@ public class Endereco extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Erro ao deletar!.",
                                 Toast.LENGTH_SHORT).show();
                     }
-                });*/
+                });
     }
+
+    public void carregarDados(View view) {
+        final DocumentReference docRef = db.collection("endereco").document(editTextIdEndereco.getText().toString());
+        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+                        editTextIdEndereco.setText(document.getId().toString());
+                        editTextRua.setText(document.get("rua").toString() != null? document.get("rua").toString() : "");
+                        editTextNumero.setText(document.get("numero").toString() != null? document.get("numero").toString() : "");
+                        editTextComplemento.setText(document.get("complemento").toString() != null? document.get("complemento").toString() : "");
+                        editTextCep.setText(document.get("cep").toString() != null? document.get("cep").toString() : "");
+                        editTextCidadeEndereco.setText(document.get("cidade").toString() != null? document.get("cidade").toString() : "");
+                        editTextEstado.setText(document.get("estado").toString() != null? document.get("estado").toString() : "");
+                        editTextPais.setText(document.get("pais").toString() != null? document.get("pais").toString() : "");
+                        editTextRegiao.setText(document.get("regiao").toString() != null? document.get("regiao").toString() : "");
+                        editTextContinente.setText(document.get("continente").toString() != null? document.get("continente").toString() : "");
+                        editTextLatitude.setText(document.get("latitude") != null? document.get("latitude").toString() : "");
+                        editTextLongitude.setText(document.get("longitude") != null? document.get("longitude").toString() : "");
+                        Toast.makeText(getApplicationContext(), "Documento encontrado!.",
+                                Toast.LENGTH_SHORT).show();
+                    } else {
+                        Log.d("TAG", "Documento não encontrado");
+                        Toast.makeText(getApplicationContext(), "Documento não encontrado!.",
+                                Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Log.d("TAG", "Falhou em ", task.getException());
+                    Toast.makeText(getApplicationContext(), "Falha ao ler!.",
+                            Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
+
 
     //após deletar deve limpar os campos
     public void limparDados() {
@@ -182,6 +237,8 @@ public class Endereco extends AppCompatActivity {
         editTextPais.setText("");
         editTextRegiao.setText("");
         editTextContinente.setText("");
-        editTextCoordenadas.setText("");
+        editTextLongitude.setText("");
+        editTextLatitude.setText("");
     }
+
 }

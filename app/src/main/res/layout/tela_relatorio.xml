@@ -1,0 +1,136 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context=".activity.Relatorio">>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/textTitulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Relatórios"
+            android:textSize="30sp" />
+
+        <Button
+            android:id="@+id/buttonLerUsuarios"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="28dp"
+            android:gravity="center"
+            android:onClick="lerUsuarios"
+            android:text="Relatório de Usuários" />
+        <Button
+            android:id="@+id/buttonLerUsuariosPropietários"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="28dp"
+            android:gravity="center"
+            android:onClick="lerPropietarios"
+            android:text="Relatório de Propietários" />
+
+        <Button
+            android:id="@+id/buttonLerEnderecos"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="28dp"
+            android:gravity="center"
+            android:onClick="lerEnderecos"
+            android:text="Relatório de Endereços" />
+
+        <Button
+            android:id="@+id/buttonLerPropriedades"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="28dp"
+            android:gravity="center"
+            android:onClick="lerPropiedades"
+            android:text="Relatório de Propiedades" />
+
+        <EditText
+            android:id="@+id/editTextIdpropiedadeConsulta"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="28dp"
+            android:ems="15"
+            android:inputType="textPersonName"
+            android:hint="Digite o ID da Propiedade" />
+
+        <Button
+            android:id="@+id/buttonLerUnidadesProp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="28dp"
+            android:gravity="center"
+            android:onClick="lerUnidadePropiedade"
+            android:text="Relatório de Unidades da Propiedade" />
+
+        <EditText
+            android:id="@+id/editTextEnderecoRegiao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="28dp"
+            android:ems="15"
+            android:inputType="textPersonName"
+            android:hint="Digite a região" />
+
+        <Button
+            android:id="@+id/buttonLerRegiaoEndereco"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="28dp"
+            android:gravity="center"
+            android:onClick="lerRegiaoEndereco"
+            android:text="Digite a Região" />
+
+
+        <EditText
+            android:id="@+id/editTextLerPropiedadeConsulta"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="28dp"
+            android:ems="15"
+            android:inputType="textPersonName"
+            android:hint="Digite o ID da Propriedade" />
+
+        <Button
+            android:id="@+id/buttonLerFaturamentoPropriedade"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="28dp"
+            android:gravity="center"
+            android:onClick="lerFaturamentoProp"
+            android:text="Relatório de faturamento da Propriedade" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/textViewLeitura"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="28dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="10dp"
+                android:text=""
+                android:textSize="20sp" />
+        </androidx.core.widget.NestedScrollView>
+
+    </LinearLayout>
+</ScrollView>

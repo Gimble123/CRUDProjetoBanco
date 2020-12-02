@@ -67,5 +67,14 @@ public class Menu extends AppCompatActivity {
             }
         });
 
+        Button btn_cad_Gerar_Relatório;
+        btn_cad_Gerar_Relatório = (Button) findViewById(R.id.btn_cad_Gerar_Relatório);
+        btn_cad_Gerar_Relatório.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(), Relatorio.class);
+                startActivity(i);
+            }
+        });
     }
 }
