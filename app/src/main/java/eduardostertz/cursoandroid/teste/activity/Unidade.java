@@ -99,40 +99,6 @@ public class Unidade extends AppCompatActivity {
 
 
 
-    public void ler(View view){
-        final DocumentReference docRef = db.collection("propriedade").document(editTextIDPropriedade.getText().toString()).collection("unidade").
-                document(editTextIDUnidade.getText().toString());
-        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if (task.isSuccessful()) {
-                    DocumentSnapshot document = task.getResult();
-                    if (document.exists()) {
-                        textViewLeitura.setText("ID: " + document.getId()
-                                + "\nNome: " + (document.get("nome") != null ? document.get("nome").toString() : "") +
-                                "\nDescricao: " + (document.get("descricao") != null ? document.get("descricao").toString() : "") +
-                                "\nTipo: " + (document.get("tipo") != null ? document.get("tipo").toString() : "") +
-                                "\nCategoria: " + (document.get("categoria") != null ? document.get("categoria").toString() : "") +
-                                "\nEmail: " + (document.get("email") != null ? document.get("email").toString() : "") +
-                                "\nTelefone: " + (document.get("telefone") != null ? document.get("telefone").toString() : "") +
-                                "\nId endereco: " + (document.get("endereco") != null ? document.get("endereco").toString() : ""));
-                        Toast.makeText(getApplicationContext(), "Documento encontrado!.",
-                                Toast.LENGTH_SHORT).show();
-                    } else {
-                        Log.d("TAG", "Documento não encontrado");
-                        Toast.makeText(getApplicationContext(), "Documento não encontrado!.",
-                                Toast.LENGTH_SHORT).show();
-                    }
-                } else {
-                    Log.d("TAG", "Falhou em ", task.getException());
-                    Toast.makeText(getApplicationContext(), "Falha ao ler!.",
-                            Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-    }
-
-
 
     public void atualizar(View view){
         db.collection("propriedade").document(editTextIDPropriedade.getText().toString()).collection("unidade").document(
