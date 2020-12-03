@@ -11,9 +11,12 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
@@ -24,14 +27,12 @@ import eduardostertz.cursoandroid.teste.R;
 public class Usuario extends AppCompatActivity {
 
 
-
-    EditText editTextNomeUsuario, editTextCpf, editTextSobrenome,editTextEmail,editTextTipo, editTextIDdoUsuario, editTextEnderecoUsuario;
-
+    EditText editTextNomeUsuario, editTextCpf, editTextSobrenome, editTextEmail, editTextTipo, editTextIDdoUsuario, editTextEnderecoUsuario;
 
 
-    TextView textView;
+    TextView textView, textViewLeitura;
 
-    Button buttonCriar, buttonLer,buttonAtualizar,buttonDeletar;
+    Button buttonCriar, buttonLer, buttonAtualizar, buttonDeletar;
 
     FirebaseFirestore db;
 
@@ -50,6 +51,7 @@ public class Usuario extends AppCompatActivity {
         editTextEnderecoUsuario = findViewById(R.id.editTextEnderecoUsuario);
 
         textView = findViewById(R.id.textView);
+        textViewLeitura = findViewById(R.id.textViewLeitura);
 
         buttonCriar = findViewById(R.id.buttonCriar);
         buttonLer = findViewById(R.id.buttonLer);
@@ -77,10 +79,10 @@ public class Usuario extends AppCompatActivity {
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
-                       // editTextId.setText(documentReference.getId());
-                       // textView.setText("Cadastrado!");
+                        // editTextId.setText(documentReference.getId());
+                        // textView.setText("Cadastrado!");
                         Toast.makeText(getApplicationContext(), "Criado!.",
-                        Toast.LENGTH_SHORT).show();
+                                Toast.LENGTH_SHORT).show();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -94,16 +96,20 @@ public class Usuario extends AppCompatActivity {
     }
 
 
-
-    public void ler(View view){
-       /* DocumentReference docRef = db.collection("usuario").document(editTextId.getText().toString());
+    public void ler(View view) {
+        final DocumentReference docRef = db.collection("usuario").document(editTextIDdoUsuario.getText().toString());
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 if (task.isSuccessful()) {
                     DocumentSnapshot document = task.getResult();
                     if (document.exists()) {
-                        textView.setText(editTextId.getText().toString());
+                        textViewLeitura.setText("ID: " + document.getId() + "\nNome: " + (document.get("nome") != null ? document.get("nome").toString() : "") +
+                                "\nSobrenome: " + (document.get("sobrenome") != null ? document.get("sobrenome").toString() : "") +
+                                "\nCpf: " + (document.get("cpf") != null ? document.get("cpf").toString() : "") +
+                                "\nEmail: " + (document.get("email") != null ? document.get("email").toString() : "") +
+                                "\nTipo: " + (document.get("tipo").equals("P") ? "Proprietário" : "Geral") +
+                                "\nId endereco: " + (document.get("endereco") != null ? document.get("endereco").toString() : ""));
                         Toast.makeText(getApplicationContext(), "Documento encontrado!.",
                                 Toast.LENGTH_SHORT).show();
                     } else {
@@ -117,19 +123,19 @@ public class Usuario extends AppCompatActivity {
                             Toast.LENGTH_SHORT).show();
                 }
             }
-        });*/
+        });
     }
 
 
-
-    public void atualizar(View view){
+    public void atualizar(View view) {
 
 
         db.collection("usuario").document(editTextIDdoUsuario.getText().toString()).
                 update("nome", editTextNomeUsuario.getText().toString(), "cpf", editTextCpf.getText().toString()
-                ,"sobrenome",editTextSobrenome.getText().toString(),
-                       "email",editTextEmail.getText().toString(),
-                       "tipo", editTextTipo.getText().toString()).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        , "sobrenome", editTextSobrenome.getText().toString(),
+                        "email", editTextEmail.getText().toString(),
+                        "tipo", editTextTipo.getText().toString(),
+                        "endereco", editTextEnderecoUsuario.getText().toString()).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
                 Toast.makeText(getApplicationContext(), "Atualizado!.",
@@ -146,9 +152,8 @@ public class Usuario extends AppCompatActivity {
     }
 
 
-
-    public void deletar(View view){
-       db.collection("usuario").document(editTextIDdoUsuario.getText().toString())
+    public void deletar(View view) {
+        db.collection("usuario").document(editTextIDdoUsuario.getText().toString())
                 .delete()
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
@@ -170,11 +175,45 @@ public class Usuario extends AppCompatActivity {
     }
 
     //após deletar deve limpar os campos
-    public void limparDados(){
+    public void limparDados() {
         editTextNomeUsuario.setText("");
         editTextNomeUsuario.setText("");
         editTextNomeUsuario.setText("");
         editTextNomeUsuario.setText("");
         editTextNomeUsuario.setText("");
+        editTextEnderecoUsuario.setText("");
+    }
+
+    public void carregarDados(View view) {
+
+        final DocumentReference docRef = db.collection("usuario").document(editTextIDdoUsuario.getText().toString());
+        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+                        editTextIDdoUsuario.setText(document.getId());
+                        editTextNomeUsuario.setText((document.get("nome") != null ? document.get("nome").toString() : ""));
+                        editTextSobrenome.setText((document.get("sobrenome") != null ? document.get("sobrenome").toString() : ""));
+                        editTextCpf.setText((document.get("cpf") != null ? document.get("cpf").toString() : ""));
+                        editTextEmail.setText((document.get("email") != null ? document.get("email").toString() : ""));
+                        editTextTipo.setText((document.get("tipo") != null ? document.get("tipo").toString() : ""));
+                        editTextEnderecoUsuario.setText((document.get("endereco") != null ? document.get("endereco").toString() : ""));
+                        Toast.makeText(getApplicationContext(), "Documento encontrado!.",
+                                Toast.LENGTH_SHORT).show();
+                    } else {
+                        Log.d("TAG", "Documento não encontrado");
+                        Toast.makeText(getApplicationContext(), "Documento não encontrado!.",
+                                Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Log.d("TAG", "Falhou em ", task.getException());
+                    Toast.makeText(getApplicationContext(), "Falha ao ler!.",
+                            Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
     }
 }

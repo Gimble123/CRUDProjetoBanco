@@ -36,13 +36,10 @@ public class Unidade extends AppCompatActivity {
 
     FirebaseFirestore db;
 
-    TextView textView, textViewLeituraDados;
-
-    DocumentReference propiedadeRef;
+    TextView textView, textViewLeitura;
 
     CollectionReference propriedadeReference;
 
-    String idocuemnto = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +58,7 @@ public class Unidade extends AppCompatActivity {
 
         textView = findViewById(R.id.textView);
 
-        textViewLeituraDados = findViewById(R.id.textViewLeituraDados);
+        textViewLeitura = findViewById(R.id.textViewLeitura);
 
         db = FirebaseFirestore.getInstance();
 
@@ -87,7 +84,7 @@ public class Unidade extends AppCompatActivity {
             public void onSuccess(DocumentReference documentReference) {
                 Toast.makeText(getApplicationContext(), "Cadastrado!.",
                         Toast.LENGTH_SHORT).show();
-                limparDados();
+                //limparDados();
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -103,17 +100,50 @@ public class Unidade extends AppCompatActivity {
 
 
     public void ler(View view){
-
+        final DocumentReference docRef = db.collection("propriedade").document(editTextIDPropriedade.getText().toString()).collection("unidade").
+                document(editTextIDUnidade.getText().toString());
+        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+                        textViewLeitura.setText("ID: " + document.getId()
+                                + "\nNome: " + (document.get("nome") != null ? document.get("nome").toString() : "") +
+                                "\nDescricao: " + (document.get("descricao") != null ? document.get("descricao").toString() : "") +
+                                "\nTipo: " + (document.get("tipo") != null ? document.get("tipo").toString() : "") +
+                                "\nCategoria: " + (document.get("categoria") != null ? document.get("categoria").toString() : "") +
+                                "\nEmail: " + (document.get("email") != null ? document.get("email").toString() : "") +
+                                "\nTelefone: " + (document.get("telefone") != null ? document.get("telefone").toString() : "") +
+                                "\nId endereco: " + (document.get("endereco") != null ? document.get("endereco").toString() : ""));
+                        Toast.makeText(getApplicationContext(), "Documento encontrado!.",
+                                Toast.LENGTH_SHORT).show();
+                    } else {
+                        Log.d("TAG", "Documento não encontrado");
+                        Toast.makeText(getApplicationContext(), "Documento não encontrado!.",
+                                Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Log.d("TAG", "Falhou em ", task.getException());
+                    Toast.makeText(getApplicationContext(), "Falha ao ler!.",
+                            Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
 
 
     public void atualizar(View view){
-
-
-
-        db.collection("propriedade").document("LAIQTQ69WUG8UOtzooIA").collection("unidade").document(
-                "R4b58bibVKzonTx2e4yu").update("nome", editTextNomeUnidade).addOnSuccessListener(new OnSuccessListener<Void>() {
+        db.collection("propriedade").document(editTextIDPropriedade.getText().toString()).collection("unidade").document(
+                editTextIDUnidade.getText().toString()).update("nome", editTextNomeUnidade,
+                "descricao", editTextDescricaoUnidade,
+                "nome", editTextNomeUnidade,
+                "tipo", editTextTipoUnidade,
+                "categoria", editTextCategoriaUnidade,
+                "proprietario", editTextProprietarioUnidade,
+                "foto", editTextFotoUnidade,
+                "video", editTextVideoUnidade).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
                 Toast.makeText(getApplicationContext(), "Atualizado!.",
@@ -127,29 +157,12 @@ public class Unidade extends AppCompatActivity {
                         Toast.LENGTH_SHORT).show();
             }
         });
-
-        /*db.collection("unidade").document(editTextIDUnidade.getText().toString()).
-                update("nome", editTextNomeUnidade.getText().toString()).addOnSuccessListener(new OnSuccessListener<Void>() {
-            @Override
-            public void onSuccess(Void aVoid) {
-                textView.setText("Atualizado!");
-                Toast.makeText(getApplicationContext(), "Atualizado!.",
-                        Toast.LENGTH_SHORT).show();
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Log.d("TAG", "Falhou ao atualizar");
-                Toast.makeText(getApplicationContext(), "Falha ao atualizar!.",
-                        Toast.LENGTH_SHORT).show();
-            }
-        });*/
     }
 
 
 
     public void deletar(View view){
-       /* db.collection("usuario").document(editTextId.getText().toString())
+       db.collection("unidade").document(editTextIDUnidade.getText().toString())
                 .delete()
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
@@ -167,7 +180,7 @@ public class Unidade extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Erro ao deletar!.",
                                 Toast.LENGTH_SHORT).show();
                     }
-                });*/
+                });
     }
 
     //após deletar deve limpar os campos
@@ -180,6 +193,7 @@ public class Unidade extends AppCompatActivity {
         editTextFotoUnidade.setText("");
         editTextVideoUnidade.setText("");
         editTextIDPropriedade.setText("");
+        editTextIDUnidade.setText("");
 
     }
 }

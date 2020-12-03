@@ -136,7 +136,16 @@
             android:gravity="center"
             android:layout_marginTop="20dp"
             android:onClick="ler"
-            android:text="Ler" />
+            android:text="Pesquisar" />
+
+        <Button
+            android:id="@+id/buttonCarregarDados"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:layout_marginTop="20dp"
+            android:onClick="carregarDados"
+            android:text="Carregar Dados" />
 
         <Button
             android:id="@+id/buttonAtualizar"
@@ -155,6 +164,17 @@
             android:layout_marginTop="20dp"
             android:onClick="deletar"
             android:text="Deletar" />
+
+        <TextView
+            android:id="@+id/textViewLeitura"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="28dp"
+            android:layout_marginBottom="10dp"
+            android:text=""
+            android:textSize="20sp" />
 
     </LinearLayout>
 </ScrollView>

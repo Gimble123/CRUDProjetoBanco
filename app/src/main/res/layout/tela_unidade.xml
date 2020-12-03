@@ -98,7 +98,7 @@
             android:layout_marginTop="28dp"
             android:ems="15"
             android:inputType="textPersonName"
-            android:hint="Proprietário"/>
+            android:hint="ID do Proprietário"/>
 
         <EditText
             android:id="@+id/editTextFotoUnidade"
@@ -175,6 +175,17 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_marginTop="28dp"
+            android:text=""
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/textViewLeitura"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="28dp"
+            android:layout_marginBottom="10dp"
             android:text=""
             android:textSize="20sp" />
 

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:context=".activity.Disponibilidade">>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/textTitulo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:text="Verificar Disponibilidade"
+                android:textSize="30sp" />
+
+
+            <EditText
+                android:id="@+id/idPropriedade"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="28dp"
+                android:ems="15"
+                android:inputType="textPersonName"
+                android:hint="ID da Propriedade" />
+
+            <EditText
+                android:id="@+id/idUnidade"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="28dp"
+                android:ems="15"
+                android:inputType="textPersonName"
+                android:hint="ID da Unidade" />
+
+            <EditText
+                android:id="@+id/dataEntrada"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="28dp"
+                android:ems="15"
+                android:inputType="textPersonName"
+                android:hint="Data de entrada" />
+
+            <EditText
+                android:id="@+id/dataSaida"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="28dp"
+                android:ems="15"
+                android:inputType="textPersonName"
+                android:hint="Data de Saída" />
+
+
+            <Button
+                android:id="@+id/buttonDeletar"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:layout_marginTop="20dp"
+                android:onClick="verificarButton"
+                android:text="Verificar" />
+
+            <TextView
+                android:id="@+id/textViewResposta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="28dp"
+                android:layout_marginBottom="10dp"
+                android:text=""
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/buttonCriar"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:visibility="invisible"
+                android:layout_marginTop="20dp"
+                android:onClick="criar"
+                android:text="Realizar uma hospedagem" />
+
+        </LinearLayout>
+    </ScrollView>

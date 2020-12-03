@@ -76,5 +76,15 @@ public class Menu extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+        Button btn_cad_Disponibilidade;
+        btn_cad_Disponibilidade = (Button) findViewById(R.id.btn_cad_Disponibilidade);
+        btn_cad_Disponibilidade.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(), Disponibilidade.class);
+                startActivity(i);
+            }
+        });
     }
 }

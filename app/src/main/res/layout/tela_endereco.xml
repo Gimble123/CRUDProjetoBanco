@@ -181,7 +181,7 @@
             android:gravity="center"
             android:layout_marginTop="20dp"
             android:onClick="ler"
-            android:text="Ler" />
+            android:text="Pesquisar" />
 
         <Button
             android:id="@+id/buttonCarregarDados"

@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.Relatorio"></activity>
+        <activity android:name=".activity.Disponibilidade"></activity>
+        <activity android:name=".activity.Relatorio" />
         <activity android:name=".activity.Hospedagem" />
         <activity android:name=".activity.Unidade" />
         <activity android:name=".activity.Endereco" />
