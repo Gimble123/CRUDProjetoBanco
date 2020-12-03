@@ -62,8 +62,6 @@ public class Relatorio extends AppCompatActivity {
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                 for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
 
-                    //String nome = documentSnapshot.get("nome").toString();
-
                     dataUsuario[0] += "\n-----------------------------------------------------------" +
                             "\nNome: " + documentSnapshot.get("nome").toString() +
                             "\nSobrenome: " + documentSnapshot.get("sobrenome").toString() +
