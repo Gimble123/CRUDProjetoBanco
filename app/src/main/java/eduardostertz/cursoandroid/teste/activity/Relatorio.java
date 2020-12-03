@@ -43,7 +43,6 @@ public class Relatorio extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tela_relatorio);
 
-        editTextIdpropiedadeConsulta = findViewById(R.id.editTextIdpropiedadeConsulta);
         editTextEnderecoRegiao = findViewById(R.id.editTextEnderecoRegiao);
         editTextLerPropiedadeConsulta = findViewById(R.id.editTextLerPropiedadeConsulta);
 
